@@ -1,7 +1,6 @@
-# class UserController < ApplicationController
+class UserController < ApplicationController
 
-# def index
-#     @users = User.all
-# end
+def email
+end
 
-# end
+end
