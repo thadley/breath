@@ -8,7 +8,7 @@ def update
         flash[:notice] = "User information updated"
         redirect_to edit_user_registration_path(current_user)
     else
-        render "devise/registrations/edit"
+        render "root"
     end
 end
 
