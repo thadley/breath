@@ -1,6 +1,7 @@
 <div class="body">
     <p>take 1 conscious breath/day</p>
     <p>1 random reminder/day</p>
-    <p>to your <%=link_to 'email', user_email_path%></p>
+    <p>to your <%=link_to 'email', user_path(:id)%></p>
+    <p>or <%=link_to 'phone', user_path(:id)%>.</p><br />
     <p>that's it.</p>
 </div>
