@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
       'US Cellular' => '@email.uscc.net'
       }
 
-      p carriers[name]
+      carriers[name].to_s
   end
 
   def sms_address
