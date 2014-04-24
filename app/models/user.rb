@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   
 
-  def get_carrier_email_map(name)
+  def get_carrier_email_by_name(name)
     carriers = {
       'AT&T' => '@txt.att.net',
       'Verizon' => '@vtext.com',
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def sms_address
-    phone_number.to_s + get_carrier_email_map("#{carrier}")
+    phone_number.to_s + get_carrier_email_by_name("#{carrier}")
   end
 
 end
