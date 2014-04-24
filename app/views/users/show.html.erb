@@ -1,0 +1,21 @@
+<div class="form-group">
+ <% if current_user %>
+    Hello <%= link_to (current_user.email), edit_user_registration_path %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    
+    <p>
+    <%= form_for @user do |f| %>
+        <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %> 
+        <%= f.check_box :send_email %> <%= f.label :send_email %> <br />
+        <%= f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number' %> 
+        <%= f.select :carrier, options_for_select(%w[AT&T Verizon Sprint T-Mobile USCellular]) %>
+        <%= f.check_box :send_sms %> <%= f.label :send_SMS %> <br />
+        <%= f.submit 'Save', class: 'btn btn-info' %>
+    <% end %></p>
+
+ <% else %>
+    <%= link_to "Sign up", new_user_registration_path %>
+    or
+    <%= link_to "Sign in", new_user_session_path %>
+
+ <% end %>
+</div>

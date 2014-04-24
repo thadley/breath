@@ -1,9 +1,8 @@
 class ReminderMailer < ActionMailer::Base
   default from: "trisha.hadley@gmail.com"
 
-  def reminder_email(user)
-    @user = user
+  def reminder_email(email)
     @url = 'http://trisha-breath.herokuapp.com'
-    mail(to: @user.email, subject: 'Reminder')
+    mail(to: email, subject: 'Reminder')
   end
 end

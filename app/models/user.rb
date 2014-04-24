@@ -3,4 +3,22 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  
+
+  def get_carrier_email_map(name)
+    carriers = {
+      'AT&T' => '@txt.att.net',
+      'Verizon' => '@vtext.com',
+      'Sprint' => '@messaging.sprintpcs.com',
+      'T-Mobile' => '@tmomail.net',
+      'US Cellular' => '@email.uscc.net'
+      }
+
+      p carriers[name]
+  end
+
+  def sms_address
+    phone_number.to_s + get_carrier_email_map("#{carrier}")
+  end
+
 end
