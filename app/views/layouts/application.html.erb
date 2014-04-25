@@ -11,7 +11,7 @@
     <center><div type= "btn-circle">
       <%=link_to '!', welcome_about_path, :class => 'btn btn-circle' %>
       <%=link_to '!', welcome_launch_path, :class => 'btn btn-circle' %>
-      <%=link_to '!', edit_user_path(:id), :class => 'btn btn-circle' %>
+      <%=link_to '!', edit_user_path(current_user), :class => 'btn btn-circle' %>
     </div><center>
 
       <% if flash[:notice] %>
