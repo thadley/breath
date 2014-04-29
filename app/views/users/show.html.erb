@@ -5,10 +5,12 @@
     <p>
     <%= form_for @user do |f| %>
         <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %> 
-        <%= f.check_box :send_email %> <%= f.label :send_email %> <br />
-        <%= f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number' %> 
+        <p class="emailCheckbox">
+        <%= f.check_box :send_email %> <%= f.label :send_email %></p>
+        <%= f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number' %>
         <%= f.select :carrier, options_for_select(%w[AT&T Verizon Sprint T-Mobile USCellular]) %>
-        <%= f.check_box :send_sms %> <%= f.label :send_SMS %> <br />
+        <p class="smsCheckbox"> 
+        <%= f.check_box :send_sms %> <%= f.label :send_SMS %> <p/>
         <%= f.submit 'Save', class: 'btn btn-info' %>
     <% end %></p>
 
