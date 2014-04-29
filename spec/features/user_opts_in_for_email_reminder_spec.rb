@@ -15,7 +15,9 @@ feature 'opts in for email reminder' do
 
     scenario 'Successfully' do
        login_as(user, :scope => :user)
-       visit user_path(:id)
+       visit welcome_launch_path
+       # navigate to user_edit_path with link to 'Sign out'
+       click_link 'email'
        expect( page ). to have_content('Sign out')
        email_box = find(:css, ".emailCheckbox")
        email_box.should_not be_checked
