@@ -15,7 +15,9 @@ feature 'signs in to app' do
 
     scenario 'Successfully' do
        login_as(user, :scope => :user)
-       visit welcome_about_path
+       visit welcome_launch_path
+       # navigate to user_edit_path with link to 'Sign out'
+       click_link 'email'
        expect( page ). to have_content('Sign out')
     end
 

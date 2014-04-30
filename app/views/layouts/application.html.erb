@@ -6,13 +6,21 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
+<body>
+  <% if current_user %>
     <center><div type= "btn-circle">
       <%=link_to '!', welcome_about_path, :class => 'btn btn-circle' %>
       <%=link_to '!', welcome_launch_path, :class => 'btn btn-circle' %>
-      <%=link_to '!', user_path(:id), :class => 'btn btn-circle' %>
+      <%=link_to '!', edit_user_path(current_user), :class => 'btn btn-circle' %>
     </div><center>
+  <% else %>
+    <center><div type= "btn-circle">
+      <%=link_to '!', welcome_about_path, :class => 'btn btn-circle' %>
+      <%=link_to '!', welcome_launch_path, :class => 'btn btn-circle' %>
+      <%=link_to '!', new_user_session_path, :class => 'btn btn-circle' %>
+    </div><center>
+  <% end %>
 
       <% if flash[:notice] %>
         <div class="alert alert-success">

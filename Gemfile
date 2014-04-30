@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
+ruby '2.1.1'
 
 group :production do
     gem 'pg'
@@ -42,6 +43,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara-screenshot'
 end
 
 gem 'bootstrap-sass'
