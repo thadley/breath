@@ -46,12 +46,12 @@ group :development, :test do
   gem 'capybara-screenshot'
 end
 
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro'
 gem 'whenever', require: false
 gem 'activeadmin', github: 'gregbell/active_admin'  # http://stackoverflow.com/questions/16426398/active-admin-install-with-rails-4
-
+gem 'compass-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
