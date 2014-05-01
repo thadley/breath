@@ -4,7 +4,7 @@ feature 'Guest views site information' do
 
     scenario 'Successfully' do
         visit welcome_about_path
-        expect( page ).to have_content('about')
+        expect( page ).to have_content('breath.')
     end
 end
 
