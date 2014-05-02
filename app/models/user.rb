@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  validates :phone_number, length: {is: 10}, numericality: { only_integer: true }, allow_nil: true
-  
+  validates :phone_number, length: {is: 10}, numericality: { only_integer: true }, allow_nil: true, uniqueness: true
+
   def get_carrier_email_by_name(name)
     carriers = {
       'AT&T' => '@txt.att.net',

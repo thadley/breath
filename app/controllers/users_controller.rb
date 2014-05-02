@@ -9,7 +9,8 @@ def update
         flash[:notice] = "User information updated"
         redirect_to root_url
     else
-        render "devise/registrations/edit"
+        flash[:error] = "There was an error. Please try again."
+        redirect_to :back
     end
 end
 
