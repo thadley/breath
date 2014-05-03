@@ -617,6 +617,7 @@
 </body>
 
 <footer>
+
 <div id="contact" class="animated fadeIn dealy-8" >
 <div class="container">
     <div class="row">
@@ -664,16 +665,58 @@
 
             <div  class="footer-container">
               <div class="social social-footer">
-                <a href="#"><span class="social-item"><i class="entypo-facebook"></i></span></a>
-                <a href="#"><span class="social-item"><i class="entypo-twitter"></i></span></a>
-                <a href="#"><span class="social-item"><i class="entypo-gplus"></i></span></a>
-                <a href="#"><span class="social-item"><i class="entypo-pinterest"></i></span></a>
+
+                <!-- good looking icon -->
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://trisha-breath.herokuapp.com" target="_blank"><span class="social-item"><i class="entypo-facebook"></i></span></a>
+                <!-- works better async JS icon -->
+                <!-- <div class="fb-share-button" data-href="https://trisha-breath.herokuapp.com" data-type="icon"></div> -->
+
+                <!-- good looking and works great icon -->
+                <a href="https://twitter.com/intent/tweet?text=This moment is your life. Breathe. Notice it. -- take 1 conscious breath/day with http://trisha-breath.herokuapp.com" target="_blank"><span class="social-item"><i class="entypo-twitter"></i></span></a>
+                
+                <!-- good looking icon -->
+                <a href="https://plus.google.com/share?url=http://trisha-breath.herokuapp.com" target="_blank"><span class="social-item"><i class="entypo-gplus"></i></span></a>
+                <!-- works better icon -->
+                <!-- <div class="g-plusone" data-annotation="none" data-href="https://trisha-breath.herokuapp.com"></div> -->
+                
+                <!-- good looking icon (with below JS commented out) -->
+                <!-- works better icon (with below JS not commented out) -->
+                <a href="http://pinterest.com/pin/create/button/?url=https://trisha-breath.herokuapp.com&media=http://i62.tinypic.com/2rwt7bt.png&description=This moment is your life. Breath. Notice it. - take 1 conscious breath/day with http://trisha-breath.herokuapp.com" class="pin-it-button" count-layout="horizontal" target="_blank"><span class="social-item"><i class="entypo-pinterest"></i></span></a>
+
               </div>
             </div>
         </div>
     </div> <!-- END row -->
 </div><!-- END .container -->
 </div><!-- END contact -->
+
+
+<!-- asynchronous JS for social buttons -->
+<!-- adapted from: http://css-tricks.com/snippets/javascript/async-sharing-buttons-g-facebook-twitter/ -->
+    <script>(function(doc, script) {
+      var js, 
+          fjs = doc.getElementsByTagName(script)[0],
+          frag = doc.createDocumentFragment(),
+          add = function(url, id) {
+              if (doc.getElementById(id)) {return;}
+              js = doc.createElement(script);
+              js.src = url;
+              id && (js.id = id);
+              frag.appendChild( js );
+          };
+          
+        // Facebook SDK
+        add('//connect.facebook.net/en_US/all.js#xfbml=1&appId=200103733347528', 'facebook-jssdk');
+        // Twitter SDK
+        add('//platform.twitter.com/widgets.js');
+        // Google+ button
+        add('https://apis.google.com/js/platform.js');
+        // // Pinterest
+        // add('//assets.pinterest.com/js/pinit.js');
+
+        fjs.parentNode.insertBefore(frag, fjs);
+    }(document, 'script'));</script>
+
 </footer>
 <!-- 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
