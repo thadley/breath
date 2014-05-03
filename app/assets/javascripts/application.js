@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+
+//= require main
+//= require vendor/bootstrap
+//= require vendor/jquery-1.10.1.min
+//= require vendor/jquery-ui-1.10.3.custom
+//= require vendor/jquery.fittext
+//= require vendor/jquery.stellar.min
+//= require vendor/modernizr-2.6.2-respond-1.1.0.min.js
+//= require vendor/waypoints.min

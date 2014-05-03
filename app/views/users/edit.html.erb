@@ -8,7 +8,7 @@
         <p class="emailCheckbox">
         <%= f.check_box :send_email %> <%= f.label :send_email %></p>
         <%= f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number' %>
-        <%= f.select :carrier, options_for_select(%w[AT&T Verizon Sprint T-Mobile USCellular]) %>
+        <%= f.select :carrier, options_for_select(%w[AT&T Verizon Sprint T-Mobile USCellular]), {}, {class: "form-control"} %>
         <p class="smsCheckbox"> 
         <%= f.check_box :send_sms %> <%= f.label :send_SMS %> <p/>
         <%= f.submit 'Save', class: 'btn btn-info' %>
