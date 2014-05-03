@@ -1,7 +1,7 @@
 <div class="form-group">
  <% if current_user %>
-    Hello <%= link_to (current_user.email), edit_user_registration_path %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    
+     Hello <%= link_to (current_user.email), edit_user_registration_path %> | <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <br></br>
     <p>
     <%= form_for @user do |f| %>
         <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %> 
