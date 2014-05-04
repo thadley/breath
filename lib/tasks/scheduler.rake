@@ -1,4 +1,4 @@
-desc "Automatically sends daily email reminder"
+desc "Automatically sends daily reminder"
 task email_users: :environment do
     User.all.each do |user|
       if user.send_email

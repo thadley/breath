@@ -22,22 +22,27 @@
       <%=link_to ' ', new_user_session_path, :class => 'btn btn-circle' %>
     </div><center>
   <% end %>
-
       <% if flash[:notice] %>
+       <div class="col-md-3 col-centered">
         <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <%= flash[:notice] %>
         </div>
+       </div>
       <% elsif flash[:error] %>
+       <div class="col-md-3 col-centered">
         <div class="alert alert-danger">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <%= flash[:error] %>
         </div>
+       </div>
       <% elsif flash[:alert] %>
+       <div class="col-md-3 col-centered">
         <div class="alert">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <%= flash[:alert] %>
         </div>
+       </div>
       <% end %>
 
 <%= yield %>

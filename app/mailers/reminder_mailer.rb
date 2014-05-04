@@ -3,6 +3,6 @@ class ReminderMailer < ActionMailer::Base
 
   def reminder_email(email)
     @url = 'http://trisha-breath.herokuapp.com'
-    mail(to: email, subject: 'Reminder')
+    mail(to: email, subject: 'Breathe')
   end
 end
