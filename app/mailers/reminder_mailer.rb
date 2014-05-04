@@ -1,8 +1,8 @@
 class ReminderMailer < ActionMailer::Base
-  default from: "trisha.hadley@gmail.com"
+  default from: "support@onebreath.io"
 
   def reminder_email(email)
-    @url = 'http://trisha-breath.herokuapp.com'
+    @url = 'onebreath.io'
     mail(to: email, subject: 'Breathe')
   end
 end
