@@ -1,0 +1,15 @@
+<h2>Verify phone number</h2>
+
+<div class="form-group">
+ <% if current_user %>
+    <%= form_for @user do |f| %>
+        <%= f.text_field :sms_verification_code_conf, class: 'form-control', placeholder: 'Enter verification code' %> 
+        <br>
+        <%= f.submit 'Save', class: 'btn btn-info' %>
+    <% end %>
+
+ <% else %>
+    Please <%= link_to "sign in", new_user_session_path %> to verify phone number.
+
+ <% end %>
+</div>
