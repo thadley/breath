@@ -9,7 +9,7 @@ end
 
 task sms_users: :environment do
     User.all.each do |user|
-      if user.send_sms
+      if user.send_sms && user.sms_verified
        ReminderMailer.reminder_email(user.sms_address).deliver!
       end
     end
