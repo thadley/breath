@@ -4,7 +4,7 @@ task email_users: :environment do
       if user.send_email
        ReminderMailer.reminder_email(user.email).deliver!
       end
-      if user.send_sms
+      if user.send_sms && user.sms_verified
        ReminderMailer.reminder_email(user.sms_address).deliver!
       end
     end
