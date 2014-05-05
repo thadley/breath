@@ -1,37 +1,35 @@
 class UsersController < ApplicationController
 
 def edit
-    @user = User.find(params[:id])
+    @user = current_user
 end
 
 def update
-    @user = User.find(params[:id])
-    if current_user.update_attributes(params[:phone_number])
-        SmsVerificationMailer.sms_verification_email(@user).deliver
-        flash[:notice] = "A verification code has been sent to your phone"
+    if user_params[:phone_number].empty?
+        phone_number_changed = nil
     else
-        flash[:error] = "There was an error. Please try again."
-        redirect_to :back
+        phone_number_changed = user_params[:phone_number] && (current_user.phone_number != user_params[:phone_number].to_i)
     end
 
-    if current_user.update_attributes(user_params)
-        flash[:notice] = "User information updated"
-        redirect_to root_url
-    else
-        flash[:error] = "There was an error. Please try again."
-        redirect_to :back
-    end
+    if phone_number_changed == true
+        current_user.update_attributes(user_params)
+        SmsVerificationMailer.sms_verification_email(current_user).deliver
+        flash[:notice] = "A verification code was sent to your phone"
+        redirect_to users_verify_sms_url
+    elsif phone_number_changed == false
+          current_user.update_attributes(user_params)
+          flash[:notice] = "User information updated"
+          redirect_to root_url
+    elsif user_params[:phone_number].empty?
+          flash[:error] = "Phone number cannot be blank. Please deselect 'Send sms' if you do not wish to receive text messages."
+          redirect_to :back
+    else flash[:error] = "There was an error. Please try again."
+         redirect_to :back
+    end 
 end
 
 def verify_sms
     @user = current_user
-    if current_user.update_attributes(params[:sms_verified])
-        flash[:notice] = "Your phone number is confirmed."
-        redirect_to root_path
-    else
-        flash[:error] = "There was an error. Please try again."
-        redirect_to :back
-    end
 end
 
 private

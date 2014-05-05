@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  validates :phone_number, length: {is: 10}, numericality: { only_integer: true }, allow_nil: true, uniqueness: true
+  validates :phone_number, length: {is: 10}, numericality: { only_integer: true }, uniqueness: true
 
   def get_carrier_email_by_name(name)
     carriers = {
@@ -23,15 +23,19 @@ class User < ActiveRecord::Base
   end
 
   # phone number can only be added with update as user is created with Devise
-  before_update :generate_sms_verification_code
+  before_update :generate_sms_verification_code, :if => :phone_number_changed?
 
   def generate_sms_verification_code
     self.sms_verification_code = rand(36**4).to_s(36)
   end
 
+  after_update :sms_verification
+
   def sms_verification
-    if user.sms_verification_code = user.sms_verification_code_conf
-      user.update_attribute(sms_verified => true)
+    if sms_verification_code == sms_verification_code_conf
+      self.update_column(:sms_verified, true)
+    else
+      self.update_column(:sms_verified, false)
     end
   end
 
