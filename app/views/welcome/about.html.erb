@@ -621,44 +621,12 @@
 <div id="contact" class="animated fadeIn dealy-8" >
 <div class="container">
     <div class="row">
-        <div class=" col-xs-12 col-sm-6">
-            <div class="form-container clearfix">
-                <div class="form-group">
-                    <br> </br>
-                 <% if current_user %>
-                    <p>
-                    <%= form_for @user do |f| %>
-                    <label for="email" class="control-label">Email</label>
-                        <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
-                       <!--  <%= f.check_box :send_email %> <%= f.label :send_email %></p></br>
-                        <br/> -->
-                    <label for="phone_number" class="control-label">Phone</label>
-                        <%= f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number' %></br>
-                        <!-- <%= f.select :carrier, options_for_select(%w[AT&T Verizon Sprint T-Mobile USCellular], f.object.carrier), {}, {class: "form-control"} %>
-                        <%= f.check_box :send_sms %> <%= f.label :send_SMS %> <br/> -->
-                        <%= f.submit 'Update', class: 'btn btn-info' %>
-                    <% end %></p>
+        <div class="col-xs-12 col-sm-6">
+            <!-- <div class="form-container clearfix"> -->
+                 
+                 <%= render partial: 'form_clearfix', locals: { welcome: @welcome } %>
 
-                 <% else %>
-                    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-                      <%= devise_error_messages! %>
-
-                      <div><%= f.label :email %><br />
-                      <%= f.email_field :email, class: 'form-control', :autofocus => true %></div>
-
-                      <div><%= f.label :password %><br />
-                      <%= f.password_field :password, class: 'form-control' %></div>
-
-                      <div><%= f.label :password_confirmation %><br />
-                      <%= f.password_field :password_confirmation, class: 'form-control'%></div>
-                      <br>
-                      
-                      <div><%= f.submit "Sign up", class: 'btn btn-info' %></div>
-                      <% end %>
-
-                 <% end %>
-                </div> 
-             </div> <!-- form container -->
+             <!-- </div> form container -->
         </div><!-- col -->
 
         <div class="contact-info col-xs-12 col-sm-6">
@@ -707,6 +675,7 @@
             </div>
         </div>
     </div> <!-- END row -->
+    <br> </br>
     <br> </br>
     <br> </br>
 </div><!-- END .container -->
