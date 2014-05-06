@@ -1,9 +1,7 @@
 <h2>Verify phone number</h2>
 <div class="form-group">
  <% if current_user %>
-    <%= form_for @user do |f| %>
-        <!-- hidden field to satisfy strict logic in controller/update that phone number is not nil -->
-        <%= f.hidden_field :phone_number, :value => current_user.phone_number %> 
+    <%= form_for @user, url: confirm_sms_path, method: :post do |f| %>
         <%= f.text_field :sms_verification_code_conf, class: 'form-control', placeholder: 'Enter verification code' %> 
         <br>
         <%= f.submit 'Save', class: 'btn btn-info' %>

@@ -5,31 +5,33 @@ def edit
 end
 
 def update
-    if user_params[:phone_number].empty?
-        phone_number_changed = nil
-    else
-        phone_number_changed = user_params[:phone_number] && (current_user.phone_number != user_params[:phone_number].to_i)
-    end
-
-    if phone_number_changed == true
-        current_user.update_attributes(user_params)
-        SmsVerificationMailer.sms_verification_email(current_user).deliver
-        flash[:notice] = "A verification code was sent to your phone"
-        redirect_to users_verify_sms_url
-    elsif phone_number_changed == false
-          current_user.update_attributes(user_params)
-          flash[:notice] = "User information updated"
-          redirect_to root_url
-    elsif user_params[:phone_number].empty?
-          flash[:error] = "Phone number cannot be blank. Please deselect 'Send sms' if you do not wish to receive text messages."
-          redirect_to :back
-    else flash[:error] = "There was an error. Please try again."
-         redirect_to :back
+    @user = current_user
+    if current_user.update_attributes(user_params)
+        if !current_user.sms_verified? && !user_params[:phone_number].empty?
+            flash[:notice] = "A verification code was sent to your phone"
+            redirect_to users_verify_sms_url
+        else
+            flash[:notice] = "User information updated"
+            redirect_to edit_profile_url
+        end
+    else 
+        flash[:error] = "There was an error. Please try again."
+        render "users/edit"
     end 
 end
 
+def confirm_sms
+  if current_user.update_attributes(user_params) && current_user.sms_verified?
+    flash[:notice] = "Verification successful"
+    redirect_to root_url
+  else 
+    flash[:error] = "That code is not valid."
+    redirect_to :back
+  end 
+end
+
 def verify_sms
-    @user = current_user
+  @user = current_user
 end
 
 private

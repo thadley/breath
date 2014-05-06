@@ -4,8 +4,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  validates :phone_number, length: {is: 10}, numericality: { only_integer: true }, uniqueness: true
 
+  validates :email, :presence => {:message => " can't be blank. Please deselect 'Send email' if you do not wish to receive email notifications." }, :if => :send_email?
+  
+  validates :phone_number, :presence => {:message => " can't be blank if you wish to receive notifications via sms. Please deselect 'Send sms' if you do not wish to receive sms notifications." }, :if => :send_sms?
+  
+  validates :phone_number, 
+            length: {is: 10, message: " must be 10 digits."}, 
+            numericality: { only_integer: true, message: " may only consist of numbers." }, :if => :phone_number?
+            # uniqueness: { message: " is already associated with an account."}, :if => :phone_number?
+
+
+     
   def get_carrier_email_by_name(name)
     carriers = {
       'AT&T' => '@txt.att.net',
@@ -38,5 +48,13 @@ class User < ActiveRecord::Base
       self.update_column(:sms_verified, false)
     end
   end
+
+  after_save :send_sms_verification
+
+  def send_sms_verification
+    if phone_number.present? && phone_number_changed?
+        SmsVerificationMailer.sms_verification_email(self).deliver
+    end
+  end  
 
 end

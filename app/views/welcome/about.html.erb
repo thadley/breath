@@ -623,41 +623,60 @@
     <div class="row">
         <div class=" col-xs-12 col-sm-6">
             <div class="form-container clearfix">
-
-                <form role="form">
-
-                  <div class="form-group clearfix ">
+                <div class="form-group">
+                    <br> </br>
+                 <% if current_user %>
+                    <p>
+                    <%= form_for @user do |f| %>
                     <label for="email" class="control-label">Email</label>
-                    <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
-                      <input type="email" class="form-control" id="email">
-                    </div>
-                  </div>
+                        <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
+                       <!--  <%= f.check_box :send_email %> <%= f.label :send_email %></p></br>
+                        <br/> -->
+                    <label for="phone_number" class="control-label">Phone</label>
+                        <%= f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number' %></br>
+                        <!-- <%= f.select :carrier, options_for_select(%w[AT&T Verizon Sprint T-Mobile USCellular], f.object.carrier), {}, {class: "form-control"} %>
+                        <%= f.check_box :send_sms %> <%= f.label :send_SMS %> <br/> -->
+                        <%= f.submit 'Update', class: 'btn btn-info' %>
+                    <% end %></p>
 
-                  <div class="form-group clearfix">
-                    <label for="name" class="control-label">Phone</label>
-                    <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
-                      <input type="text" class="form-control" id="phone_number" >
-                    </div>
-                  </div>
+                 <% else %>
+                    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+                      <%= devise_error_messages! %>
 
-                <p>
-                <div class="form-group clearfix">
-                    <button type="submit" class="form-submit-btn">Sign Up</button>
-                </div></p>
-                </form>
-            </div> <!-- form container -->
+                      <div><%= f.label :email %><br />
+                      <%= f.email_field :email, class: 'form-control', :autofocus => true %></div>
+
+                      <div><%= f.label :password %><br />
+                      <%= f.password_field :password, class: 'form-control' %></div>
+
+                      <div><%= f.label :password_confirmation %><br />
+                      <%= f.password_field :password_confirmation, class: 'form-control'%></div>
+                      <br>
+                      
+                      <div><%= f.submit "Sign up", class: 'btn btn-info' %></div>
+                      <% end %>
+
+                 <% end %>
+                </div> 
+             </div> <!-- form container -->
         </div><!-- col -->
 
         <div class="contact-info col-xs-12 col-sm-6">
             <h3 class="contact-me-title"></h3>
-            <p>take 1 conscious breath/day.</p>
-            <p>1 random reminder/day to your </p>
-            <p>email or phone.</p>
-            <br/>
-            <p>that's it.</p>
-        </div>
+             <% if current_user %>
+                <p>take 1 conscious breath/day</p>
+                <p>1 random reminder/day</p>
+                <p>to your <%=link_to 'email', edit_profile_path%> or <%=link_to 'phone', edit_profile_path%>.</p><br />
+                <p>that's it.</p>
+             <% else %>
+                <p>take 1 conscious breath/day</p>
+                <p>1 random reminder/day</p>
+                <p>to your <%=link_to 'email', new_user_registration_path%> or <%=link_to 'phone', new_user_registration_path%>.</p><br />
+                <p>that's it.</p>
+            <%end%>
+        <!-- </div> -->
 
-        <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+        <!-- <div class="col-xs-12 col-sm-4 col-sm-offset-4"> -->
             <div  class="footer-container">
                 <p> ... </p>
                 <p class="fittext amatic"> share this </p>
@@ -688,6 +707,8 @@
             </div>
         </div>
     </div> <!-- END row -->
+    <br> </br>
+    <br> </br>
 </div><!-- END .container -->
 </div><!-- END contact -->
 
