@@ -3,7 +3,7 @@ class SmsVerificationMailer < ActionMailer::Base
 
   def sms_verification_email(user)
     @user = user
-    @url = 'onebreath.io/users/verify_sms'
+    @url = 'http://onebreath.io/users/verify_sms'
     mail(to: @user.sms_address, subject: 'Verification code')
   end
 end
