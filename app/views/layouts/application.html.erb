@@ -11,7 +11,7 @@
 <body>
   <% if current_user %>
     <center><div type= "btn-circle">
-      <%=link_to ' ', root_path, :class => 'btn btn-circle' %>
+      <%=link_to ' ', "#{root_path}\#", :class => 'btn btn-circle' %>
       <%=link_to ' ', welcome_launch_path, :class => 'btn btn-circle' %>
       <%=link_to ' ', edit_profile_path, :class => 'btn btn-circle' %>
     </div><center>
