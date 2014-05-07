@@ -2,11 +2,12 @@ $(function() {
 
     /*==========  Initalize steller for parrallax header  ==========*/
     
-    // $.stellar();
+    $.stellar();
 
     /*==========  Initalize fit text for responsive text  ==========*/
 
     $(".fittext").fitText();
+    window.scrollTo(0,0);
 
     /*==================================================================
     =            Hide elements if browser suppots animation            =
