@@ -1,17 +1,24 @@
 <html class="no-js">
 
+<div id="header">
 <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title> Breath. </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+
+        <meta property="og:title" content="one breath" />
+        <meta property="og:description" content="This moment is your life. Breathe. Notice it." />
+        <meta property="og:image" content="http://www.onebreath.io/breath200x200.png" />
+        <meta property="og:url" content="http://www.onebreath.io" />
+
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap-theme.css">
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
+</div>
 
 <body>
 
@@ -614,6 +621,9 @@
     <!-- color change blue >> green/blue -->
     <div class="color-change" data-colorup="#2980B9" data-colordown="#0D777D"></div>
 
+    <!-- need image for social sharing -->
+    <a href="#breath"><img src="http://i62.tinypic.com/2rwt7bt.png" alt="breath" height="1" width="1"/></a>
+
 </div> <!-- /container --> 
 <footer>
 
@@ -652,24 +662,20 @@
             <div  class="footer-container">
               <div class="social social-footer">
 
-                <!-- good looking icon -->
-                <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-facebook"></i></span></a>
+                <!-- facebook -->
+                <a id="facebookbtn-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-facebook"></i></span></a>
 
-                <!-- works better async JS icon -->
-                <!-- <div class="fb-share-button" data-href="http://www.onebreath.io" data-type="icon"></div> -->
-
-                <!-- good looking and works great icon -->
-                <a href="https://twitter.com/intent/tweet?text=This moment is your life. Breathe. Notice it. -- take 1 conscious breath/day with http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-twitter"></i></span></a>
+                <!-- twitter -->
+                <a id= "twitterbtn-link" href="https://twitter.com/intent/tweet?text=This moment is your life. Breathe. Notice it. / take 1 conscious breath/day with onebreath.io / &hashtags=onebreath" target="_blank"><span class="social-item"><i class="entypo-twitter"></i></span></a>
                 
-                <!-- good looking icon -->
-                <a href="https://plus.google.com/share?url=http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-gplus"></i></span></a>
-                <!-- works better icon -->
-                <!-- <div class="g-plusone" data-annotation="none" data-href="http://www.onebreath.io"></div> -->
+                <!-- google + -->
+                <a id= "googlebtn-link" href="https://plus.google.com/share?url=http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-gplus"></i></span></a>
                 
-                <!-- good looking icon (with below JS commented out) -->
-                <!-- works better icon (with below JS not commented out) -->
-                <a href="http://pinterest.com/pin/create/button/?url=http://www.onebreath.io&media=http://i62.tinypic.com/2rwt7bt.png&description=This moment is your life. Breath. Notice it. - take 1 conscious breath/day with onebreath.io" class="pin-it-button" count-layout="horizontal" target="_blank"><span class="social-item"><i class="entypo-pinterest"></i></span></a>
+                <!-- pinterest -->
+                <a id = "pinterestbtn-link" href="http://pinterest.com/pin/create/button/?url=http://www.onebreath.io&media=http://i62.tinypic.com/2rwt7bt.png&description=This moment is your life. Breath. Notice it. / take 1 conscious breath/day with onebreath.io" class="pin-it-button" count-layout="horizontal" target="_blank"><span class="social-item"><i class="entypo-pinterest"></i></span></a>
 
+                <br></br>
+                <p class ="contact-me">#onebreath</p>
               </div>
             </div>
         </div>
@@ -681,33 +687,28 @@
 </div><!-- END contact -->
 
 
-<!-- asynchronous JS for social buttons -->
-<!-- adapted from: http://css-tricks.com/snippets/javascript/async-sharing-buttons-g-facebook-twitter/ -->
-    <script>(function(doc, script) {
-      var js, 
-          fjs = doc.getElementsByTagName(script)[0],
-          frag = doc.createDocumentFragment(),
-          add = function(url, id) {
-              if (doc.getElementById(id)) {return;}
-              js = doc.createElement(script);
-              js.src = url;
-              id && (js.id = id);
-              frag.appendChild( js );
-          };
-          
-        // Facebook SDK
-        add('//connect.facebook.net/en_US/all.js#xfbml=1&appId=200103733347528', 'facebook-jssdk');
-        // Twitter SDK
-        add('//platform.twitter.com/widgets.js');
-        // Google+ button
-        add('https://apis.google.com/js/platform.js');
-        // // Pinterest
-        // add('//assets.pinterest.com/js/pinit.js');
+<!-- JS for pop-up social share windows -->
+<!-- reference: http://stackoverflow.com/questions/6138780/facebook-share-button-and-custom-text/6138879#6138879 -->
+<script type= 'text/javascript'>
+    $('#facebookbtn-link,#twitterbtn-link,#googlebtn-link,#pinterestbtn-link').click(function(event) {
+    var width  = 575,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
 
-        fjs.parentNode.insertBefore(frag, fjs);
-    }(document, 'script'));</script>
+    window.open(url, 'facebook', opts);
+
+    return false;
+    });
+</script>
 
 </footer>
 
-    </body>     
+</body>     
 </html>

@@ -101,6 +101,8 @@ $(function() {
     
     
     /*-----  End of Waypoint for header  ------*/
+
+    $(document).scrollTop( $("#header").offset().top );
     
 });
 
