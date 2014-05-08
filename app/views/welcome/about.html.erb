@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12">
@@ -175,7 +176,7 @@
             </div>
 
     <!-- color change gray >> blue/purple -->
-    <div class="color-change" data-colorup="#34495e" data-colordown="#3D3295"></div>
+    <div class="color-change" data-colorup="#2B4C65" data-colordown="#3D3295"></div>
 
             <div  class="story-container story">
                 <p class="fittext amatic " data-delay="3"> gentle diffusion exchanges O2 for CO2.</p>
@@ -449,7 +450,7 @@
     <!-- end dots -->
 
     <!-- color change green/blue >> blue-->
-    <div class="color-change" data-colorup="#0D777D" data-colordown="#448FC1"></div>
+    <!-- <div class="color-change" data-colorup="#0D777D" data-colordown="#448FC1"></div> -->
 
     <div class="row">
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
@@ -614,8 +615,6 @@
     <div class="color-change" data-colorup="#2980B9" data-colordown="#0D777D"></div>
 
 </div> <!-- /container --> 
-</body>
-
 <footer>
 
 <div id="contact" class="animated fadeIn dealy-8" >
@@ -624,7 +623,7 @@
         <div class="col-xs-12 col-sm-6">
             <!-- <div class="form-container clearfix"> -->
                  
-                 <%= render partial: 'form_clearfix', locals: { welcome: @welcome } %>
+                <%= render partial: 'form_clearfix', locals: { welcome: @welcome } %>
 
              <!-- </div> form container -->
         </div><!-- col -->
@@ -632,7 +631,7 @@
         <div class="contact-info col-xs-12 col-sm-6">
             <h3 class="contact-me-title"></h3>
              <% if current_user %>
-                <p>take 1 conscious breath/day</p>
+                <p>take 1 conscious breath/day.</p>
                 <p>1 random reminder/day</p>
                 <p>to your <%=link_to 'email', edit_profile_path%> or <%=link_to 'phone', edit_profile_path%>.</p><br />
                 <p>that's it.</p>
@@ -654,22 +653,22 @@
               <div class="social social-footer">
 
                 <!-- good looking icon -->
-                <a href="https://www.facebook.com/sharer/sharer.php?u=http://onebreath.io" target="_blank"><span class="social-item"><i class="entypo-facebook"></i></span></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-facebook"></i></span></a>
 
                 <!-- works better async JS icon -->
-                <!-- <div class="fb-share-button" data-href="https://onebreath.io" data-type="icon"></div> -->
+                <!-- <div class="fb-share-button" data-href="http://www.onebreath.io" data-type="icon"></div> -->
 
                 <!-- good looking and works great icon -->
-                <a href="https://twitter.com/intent/tweet?text=This moment is your life. Breathe. Notice it. -- take 1 conscious breath/day with http://onebreath.io" target="_blank"><span class="social-item"><i class="entypo-twitter"></i></span></a>
+                <a href="https://twitter.com/intent/tweet?text=This moment is your life. Breathe. Notice it. -- take 1 conscious breath/day with http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-twitter"></i></span></a>
                 
                 <!-- good looking icon -->
-                <a href="https://plus.google.com/share?url=http://onebreath.io" target="_blank"><span class="social-item"><i class="entypo-gplus"></i></span></a>
+                <a href="https://plus.google.com/share?url=http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-gplus"></i></span></a>
                 <!-- works better icon -->
-                <!-- <div class="g-plusone" data-annotation="none" data-href="https://onebreath.io"></div> -->
+                <!-- <div class="g-plusone" data-annotation="none" data-href="http://www.onebreath.io"></div> -->
                 
                 <!-- good looking icon (with below JS commented out) -->
                 <!-- works better icon (with below JS not commented out) -->
-                <a href="http://pinterest.com/pin/create/button/?url=https://onebreath.io&media=http://i62.tinypic.com/2rwt7bt.png&description=This moment is your life. Breath. Notice it. - take 1 conscious breath/day with onebreath.io" class="pin-it-button" count-layout="horizontal" target="_blank"><span class="social-item"><i class="entypo-pinterest"></i></span></a>
+                <a href="http://pinterest.com/pin/create/button/?url=http://www.onebreath.io&media=http://i62.tinypic.com/2rwt7bt.png&description=This moment is your life. Breath. Notice it. - take 1 conscious breath/day with onebreath.io" class="pin-it-button" count-layout="horizontal" target="_blank"><span class="social-item"><i class="entypo-pinterest"></i></span></a>
 
               </div>
             </div>
@@ -710,4 +709,5 @@
 
 </footer>
 
+    </body>     
 </html>

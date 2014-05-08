@@ -1,3 +1,4 @@
+
 $(function() {
 
     /*==========  Initalize steller for parrallax header  ==========*/
@@ -7,7 +8,7 @@ $(function() {
     /*==========  Initalize fit text for responsive text  ==========*/
 
     $(".fittext").fitText();
-    window.scrollTo(0,0);
+    // window.scrollTo(0,0);
 
     /*==================================================================
     =            Hide elements if browser suppots animation            =
@@ -76,7 +77,7 @@ $(function() {
 
     }, { offset: '70%' });
     
-    
+
     /*-----  End of Waypoint for background colour  ------*/
     
     
@@ -101,5 +102,5 @@ $(function() {
     
     /*-----  End of Waypoint for header  ------*/
     
-    
 });
+
