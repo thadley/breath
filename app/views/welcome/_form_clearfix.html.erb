@@ -23,18 +23,19 @@
     <% end %>
 
   <% else %>
+
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="form-group clearfix ">
         <div class="col-sm-8 col-md-9 col-lg-10 input-container">
           <label for="email" class="control-label">e</label>
-          <%= f.email_field :email, class: 'form-control', placeholder: 'email', :autofocus => true %>
+          <%= f.email_field :email, class: 'form-control', placeholder: 'email' %>
         </div>
 
         <div class="col-sm-8 col-md-9 col-lg-10 input-container">
           <label for="password" class="control-label">p</label>
-          <%= f.password_field :password, class: 'form-control', placeholder: 'password'  %>
+          <%= f.password_field :password, class: 'form-control', placeholder: 'password' %>
         </div>
 
         <div class="col-sm-8 col-md-9 col-lg-10 input-container">

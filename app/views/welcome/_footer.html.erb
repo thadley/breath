@@ -1,0 +1,84 @@
+<footer>
+
+<div id="contact" class="animated fadeIn dealy-8" >
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <!-- <div class="form-container clearfix"> -->
+                 
+                <%= render partial: 'form_clearfix', locals: { welcome: @welcome } %>
+
+             <!-- </div> form container -->
+        </div><!-- col -->
+
+        <div class="contact-info col-xs-12 col-sm-6">
+            <h3 class="contact-me-title"></h3>
+             <% if current_user %>
+                <p>take 1 conscious breath/day.</p>
+                <p>1 random reminder/day</p>
+                <p>to your <%=link_to 'email', edit_profile_path%> or <%=link_to 'phone', edit_profile_path%>.</p><br />
+                <p>that's it.</p>
+             <% else %>
+                <p>take 1 conscious breath/day</p>
+                <p>1 random reminder/day</p>
+                <p>to your <%=link_to 'email', new_user_registration_path%> or <%=link_to 'phone', new_user_registration_path%>.</p><br />
+                <p>that's it.</p>
+            <%end%>
+        <!-- </div> -->
+
+        <!-- <div class="col-xs-12 col-sm-4 col-sm-offset-4"> -->
+            <div  class="footer-container">
+                <p> ... </p>
+                <p class="fittext amatic"> share this </p>
+            </div>
+
+            <div  class="footer-container">
+              <div class="social social-footer">
+
+                <!-- facebook -->
+                <a id="facebookbtn-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-facebook"></i></span></a>
+
+                <!-- twitter -->
+                <a id= "twitterbtn-link" href="https://twitter.com/intent/tweet?text=This moment is your life. Breathe. Notice it. / take 1 conscious breath/day with onebreath.io /&hashtags=onebreath" target="_blank"><span class="social-item"><i class="entypo-twitter"></i></span></a>
+                
+                <!-- google + -->
+                <a id= "googlebtn-link" href="https://plus.google.com/share?url=http://www.onebreath.io" target="_blank"><span class="social-item"><i class="entypo-gplus"></i></span></a>
+                
+                <!-- pinterest -->
+                <a id = "pinterestbtn-link" href="http://pinterest.com/pin/create/button/?url=http://www.onebreath.io&media=http://i62.tinypic.com/2rwt7bt.png&description=This moment is your life. Breath. Notice it. -- take 1 conscious breath/day with onebreath.io" class="pin-it-button" count-layout="horizontal" target="_blank"><span class="social-item"><i class="entypo-pinterest"></i></span></a>
+
+                <br></br>
+                <p class ="contact-me">#onebreath</p>
+              </div>
+            </div>
+        </div>
+    </div> <!-- END row -->
+    <br> </br>
+    <br> </br>
+    <br> </br>
+</div><!-- END container -->
+</div><!-- END contact -->
+
+
+<!-- JS for pop-up social share windows -->
+<!-- reference: http://stackoverflow.com/questions/6138780/facebook-share-button-and-custom-text/6138879#6138879 -->
+<script type= 'text/javascript'>
+    $('#facebookbtn-link,#twitterbtn-link,#googlebtn-link,#pinterestbtn-link').click(function(event) {
+    var width  = 575,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'facebook', opts);
+
+    return false;
+    });
+</script>
+
+</footer>

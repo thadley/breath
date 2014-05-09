@@ -5,21 +5,20 @@ $(function() {
     
     $.stellar();
 
-    /*==========  Initalize fit text for responsive text  ==========*/
+    // /*==========  Initalize fit text for responsive text  ==========*/
 
     $(".fittext").fitText();
-    // window.scrollTo(0,0);
 
     /*==================================================================
-    =            Hide elements if browser suppots animation            =
+    =            Hide elements if browser supports animation            =
     ==================================================================*/
-    
-    
-    if(!Modernizr.cssanimations){
-        //dont hide everything
-    } else {
-        $('.story-container, .story-image-container, .dot-container, .hr-container, .footer-container ').children().addClass('hide');
-    }
+    // messes up color fading
+
+    // if(!Modernizr.cssanimations){
+    //     //dont hide everything
+    // } else {
+    //      $('.story-container, .story-image-container, .dot-container, .hr-container, .footer-container ').children().addClass('hide');
+    // }
     
     /*-----  End of Hide elements if browser suppots animation  ------*/
     
@@ -27,27 +26,28 @@ $(function() {
     /*=========================================================
     =            Use waypoint to trigger animation            =
     =========================================================*/
+    // text presence
     
     
-    $('.story-container, .story-image-container, .dot-container, .hr-container, .footer-container ').waypoint(function (direction) {
+    // $('.story-container, .story-image-container, .dot-container, .hr-container, .footer-container ').waypoint(function (direction) {
 
-        if( direction == 'down'){
+    //     if( direction == 'down'){
 
-            if( $(this).children().data('delay') !== undefined ) {
-                var delay = $(this).children().data('delay');
-            } else {
-                var delay = 0;
-            }
+    //         if( $(this).children().data('delay') !== undefined ) {
+    //             var delay = $(this).children().data('delay');
+    //         } else {
+    //             var delay = 0;
+    //         }
 
-            $(this).children().removeClass("hide").addClass("animated fadeInDown delay-" + delay );
+    //         $(this).children().removeClass("hide").addClass("animated fadeInDown delay-" + delay );
 
-        } else {
+    //     } else {
 
-            $(this).children().addClass("hide").removeClass("animated fadeInDown");
+    //         $(this).children().addClass("hide").removeClass("animated fadeInDown");
 
-        }
+    //     }
 
-    }, { offset: '55%' });
+    // }, { offset: '55%' });
 
     
     /*-----  End of Use waypoint to trigger animation  ------*/
@@ -55,7 +55,8 @@ $(function() {
     /*======================================================
     =            Waypoint for background colour            =
     ======================================================*/
-    
+
+
      $('.color-change').waypoint(function (direction) {
 
         var colorUp = {
@@ -85,24 +86,31 @@ $(function() {
     =            Waypoint for header            =
     ===========================================*/
     
-    $('#start').waypoint(function (direction) {
+    // $('#start').waypoint(function (direction) {
 
-        if( direction == 'down'){
+    //     if( direction == 'down'){
 
-            $('#story-icons, #sub-title').fadeTo("300ms", 0);
+    //         $('#story-icons, #sub-title').fadeTo("300ms", 0);
 
-        } else {
+    //     } else {
 
-            $('#story-icons, #sub-title').fadeTo("300ms", 1);
+    //         $('#story-icons, #sub-title').fadeTo("300ms", 1);
 
-        }
+    //     }
 
-    }, { offset: '55%' });
+    // }, { offset: '55%' });
     
     
-    /*-----  End of Waypoint for header  ------*/
+    // /*-----  End of Waypoint for header  ------*/
 
-    $(document).scrollTop( $("#header").offset().top );
+    // $(document).scrollTop( $("#header").offset().top );
     
+
+        // window.onload=toBottom;
+
+        // function toBottom(){
+        //     window.scrollTo(0,20000)
+        //     window.scrollTo(0, 0);
+        // }
 });
 
