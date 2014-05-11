@@ -57,26 +57,26 @@ $(function() {
     ======================================================*/
 
 
-    //  $('.color-change').waypoint(function (direction) {
+     $('.color-change').waypoint(function (direction) {
 
-    //     var colorUp = {
-    //             backgroundColor: $(this).data('colorup')
-    //         };            
-    //     var colorDown = {
-    //             backgroundColor: $(this).data('colordown')
-    //         };
+        var colorUp = {
+                backgroundColor: $(this).data('colorup')
+            };            
+        var colorDown = {
+                backgroundColor: $(this).data('colordown')
+            };
 
-    //     if( direction == 'down'){
+        if( direction == 'down'){
 
-    //         $('body').animate( colorDown, 525 );
+            $('body').animate( colorDown, 525 );
 
-    //     } else {
+        } else {
 
-    //         $('body').animate(colorUp, 525 );
+            $('body').animate(colorUp, 525 );
 
-    //     }
+        }
 
-    // }, { offset: '70%' });
+    }, { offset: '70%' });
     
 
     // -----  End of Waypoint for background colour  ------
@@ -86,19 +86,19 @@ $(function() {
     // =            Waypoint for header            =
     // ===========================================*/
     
-    $('#start').waypoint(function (direction) {
+    // $('#start').waypoint(function (direction) {
 
-        if( direction == 'down'){
+    //     if( direction == 'down'){
 
-            $('#story-icons, #sub-title').fadeTo("300ms", 0);
+    //         $('#story-icons, #sub-title').fadeTo("300ms", 0);
 
-        } else {
+    //     } else {
 
-            $('#story-icons, #sub-title').fadeTo("300ms", 1);
+    //         $('#story-icons, #sub-title').fadeTo("300ms", 1);
 
-        }
+    //     }
 
-    }, { offset: '55%' });
+    // }, { offset: '55%' });
     
     
     // /*-----  End of Waypoint for header  ------*/
