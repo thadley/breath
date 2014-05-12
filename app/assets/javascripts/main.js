@@ -17,7 +17,7 @@ $(function() {
     // if(!Modernizr.cssanimations){
     //     //dont hide everything
     // } else {
-    //      $('.story-container, .story-image-container, .dot-container, .hr-container, .footer-container ').children().addClass('hide');
+    // $('.story-container, .story-image-container, .dot-container, .hr-container, .footer-container ').children().addClass('hide');
     // }
     
     /*-----  End of Hide elements if browser supports animation  ------*/
@@ -27,7 +27,6 @@ $(function() {
     =            Use waypoint to trigger animation            =
     =========================================================*/
     // text presence
-    
     
     $('.story-container, .story-image-container, .dot-container, .hr-container, .footer-container ').waypoint(function (direction) {
 
@@ -47,7 +46,7 @@ $(function() {
 
         }
 
-    }, { offset: '55%' });
+    }, { offset: '55%'});
 
     
     /*-----  End of Use waypoint to trigger animation  ------*/
@@ -55,7 +54,6 @@ $(function() {
     /*======================================================
     =            Waypoint for background colour            =
     ======================================================*/
-
 
      $('.color-change').waypoint(function (direction) {
 
@@ -81,36 +79,11 @@ $(function() {
 
     // -----  End of Waypoint for background colour  ------
     
-    
-    // /*===========================================
-    // =            Waypoint for header            =
-    // ===========================================*/
-    
-    // $('#start').waypoint(function (direction) {
+        window.onload=toFlow;
 
-    //     if( direction == 'down'){
-
-    //         $('#story-icons, #sub-title').fadeTo("300ms", 0);
-
-    //     } else {
-
-    //         $('#story-icons, #sub-title').fadeTo("300ms", 1);
-
-    //     }
-
-    // }, { offset: '55%' });
-    
-    
-    // /*-----  End of Waypoint for header  ------*/
-
-    // $(document).scrollTop( $("#header").offset().top );
-    
-
-        // window.onload=toBottom;
-
-        // function toBottom(){
-        //     window.scrollTo(0,20000)
-        //     window.scrollTo(0, 0);
-        // }
+        function toFlow(){
+            $('.story-container, .dot-container, .hr-container').children().addClass('hide');
+            $('.dot-first').children().removeClass('hide');;
+        }
 });
 
