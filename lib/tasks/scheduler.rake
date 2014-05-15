@@ -1,8 +1,21 @@
 desc "Automatically sends daily reminder"
+
+# Will send reminder email with different message ~1 time every 144 iterations
+# which ~= 1x/day (at 10 min intervals with 5 different messages)
 task email_users: :environment do
-    User.all.each do |user|
-      if user.send_email
-       ReminderMailer.reminder_email(user.email).deliver!
+      User.all.each do |user|
+      if user.send_email && 
+        if rand(1..720) == 1
+          ReminderMailer.reminder_email(user.email).deliver!
+        elsif rand(1..720) == 2
+          ReminderMailer.reminder_email_2(user.email).deliver!
+        elsif rand(1..720) == 3
+          ReminderMailer.reminder_email_3(user.email).deliver!
+        elsif rand(1..720) == 4
+          ReminderMailer.reminder_email_4(user.email).deliver!
+        elsif rand(1..720) == 5
+          ReminderMailer.reminder_email_5(user.email).deliver!
+        end
       end
     end
 end
