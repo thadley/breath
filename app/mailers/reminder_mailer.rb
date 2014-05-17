@@ -1,5 +1,5 @@
 class ReminderMailer < ActionMailer::Base
-  default from: "support@onebreath.io"
+  default from: "hello@onebreath.io"
 
   def reminder_email(email)
     @url = 'http://onebreath.io'
