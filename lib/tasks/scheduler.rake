@@ -94,7 +94,7 @@ task sms_users: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
       if user.send_sms && user.sms_verified
-       ReminderMailer.reminder_email(user.sms_address).deliver!
+       ReminderMailer.reminder_sms(user.sms_address).deliver!
       end
     end
   end
@@ -104,7 +104,7 @@ task sms_users_2: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
       if user.send_sms && user.sms_verified
-       ReminderMailer.reminder_email_2(user.sms_address).deliver!
+       ReminderMailer.reminder_sms_2(user.sms_address).deliver!
       end
     end
   end
@@ -114,7 +114,7 @@ task sms_users_3: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
       if user.send_sms && user.sms_verified
-       ReminderMailer.reminder_email_3(user.sms_address).deliver!
+       ReminderMailer.reminder_sms_3(user.sms_address).deliver!
       end
     end
   end
@@ -124,7 +124,7 @@ task sms_users_4: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
       if user.send_sms && user.sms_verified
-       ReminderMailer.reminder_email_4(user.sms_address).deliver!
+       ReminderMailer.reminder_sms_4(user.sms_address).deliver!
       end
     end
   end
@@ -134,7 +134,7 @@ task sms_users_5: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
       if user.send_sms && user.sms_verified
-       ReminderMailer.reminder_email_5(user.sms_address).deliver!
+       ReminderMailer.reminder_sms_5(user.sms_address).deliver!
       end
     end
   end
