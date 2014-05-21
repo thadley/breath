@@ -1,4 +1,5 @@
-desc "Automatically sends daily reminder"
+desc "Automatically sends daily reminder" 
+# These tasks are called by the Heroku scheduler add-on
 
 # Will send reminder email with different message ~1 time every 144 iterations
 # which ~= 1x/day (at 10 min intervals with 5 different messages)
@@ -93,8 +94,9 @@ end
 task sms_users: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
-      if user.send_sms && user.sms_verified
+      if user.send_sms && user.sms_verified && !user.sms_reminder_sent_today
        ReminderMailer.reminder_sms(user.sms_address).deliver!
+       user.update_column(:sms_reminder_sent_today, true)
       end
     end
   end
@@ -103,8 +105,9 @@ end
 task sms_users_2: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
-      if user.send_sms && user.sms_verified
+      if user.send_sms && user.sms_verified && !user.sms_reminder_sent_today
        ReminderMailer.reminder_sms_2(user.sms_address).deliver!
+       user.update_column(:sms_reminder_sent_today, true)
       end
     end
   end
@@ -113,8 +116,9 @@ end
 task sms_users_3: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
-      if user.send_sms && user.sms_verified
+      if user.send_sms && user.sms_verified && !user.sms_reminder_sent_today
        ReminderMailer.reminder_sms_3(user.sms_address).deliver!
+       user.update_column(:sms_reminder_sent_today, true)
       end
     end
   end
@@ -123,8 +127,9 @@ end
 task sms_users_4: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
-      if user.send_sms && user.sms_verified
+      if user.send_sms && user.sms_verified && !user.sms_reminder_sent_today
        ReminderMailer.reminder_sms_4(user.sms_address).deliver!
+       user.update_column(:sms_reminder_sent_today, true)
       end
     end
   end
@@ -133,9 +138,31 @@ end
 task sms_users_5: :environment do
   if rand(1..5) == 1
     User.all.each do |user|
-      if user.send_sms && user.sms_verified
+      if user.send_sms && user.sms_verified && !user.sms_reminder_sent_today
        ReminderMailer.reminder_sms_5(user.sms_address).deliver!
+       user.update_column(:sms_reminder_sent_today, true)
       end
     end
   end
 end
+
+# If users have not received daily sms reminder, this task will send one.
+
+task sms_users_final: :environment do
+  User.all.each do |user|
+    if user.send_sms && user.sms_verified && !user.sms_reminder_sent_today
+     ReminderMailer.reminder_sms(user.sms_address).deliver!
+     user.update_column(:sms_reminder_sent_today, true)
+    end
+  end
+end
+
+
+# Reset sms reminder column daily
+
+task reset_sms_column: :environment do
+  User.all.each do |user|
+    user.update_column(:sms_reminder_sent_today, false)
+  end
+end
+
