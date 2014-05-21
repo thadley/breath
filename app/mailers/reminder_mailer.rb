@@ -42,6 +42,11 @@ class ReminderMailer < ActionMailer::Base
     mail(to: email, subject: '--')
   end
 
+  def reminder_email_9(email)
+    @url = 'http://onebreath.io'
+    mail(to: email, subject: '--')
+  end
+
   # SMS templates (no subject)
   def reminder_sms(email)
     @url = 'http://onebreath.io'
