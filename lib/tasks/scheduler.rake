@@ -2,44 +2,38 @@ desc "Automatically sends daily reminder"
 # These tasks are called by the Heroku scheduler add-on
 
 # Will send reminder email with different message ~1 time every 144 iterations
-# which ~= 1x/day (at 10 min intervals with 5 different messages)
-
-# task email_users: :environment do
-#       User.all.each do |user|
-#       if user.send_email && 
-#         if rand(1..720) == 1
-#           ReminderMailer.reminder_email(user.email).deliver!
-#         elsif rand(1..720) == 2
-#           ReminderMailer.reminder_email_2(user.email).deliver!
-#         elsif rand(1..720) == 3
-#           ReminderMailer.reminder_email_3(user.email).deliver!
-#         elsif rand(1..720) == 4
-#           ReminderMailer.reminder_email_4(user.email).deliver!
-#         elsif rand(1..720) == 5
-#           ReminderMailer.reminder_email_5(user.email).deliver!
-#         end
-#       end
-#     end
-# end
-
-# Refactor email code to make email content and timing consistent throughout 
-# user base (randomization outside of loop)
+# which ~= 1x within 8hrs (at 10 min intervals with 5 different messages)
+# won't send another until column is reset (1/day)
+# Email content and timing consistent throughout user base (randomization outside of loop)
 
 task email_users: :environment do
-    email_number = rand(1..720)
+    email_number = rand(1..240)
       User.all.each do |user|
-      if user.send_email && email_number == 1
+      if user.send_email && (email_number == 1) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email(user.email).deliver!
-      elsif user.send_email && email_number == 2
+        user.update_column(:email_reminder_sent_today, true)
+      elsif user.send_email && (email_number == 2) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email_2(user.email).deliver!
-      elsif user.send_email && email_number == 3
+        user.update_column(:email_reminder_sent_today, true)
+      elsif user.send_email && (email_number == 3) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email_3(user.email).deliver!
-      elsif user.send_email && email_number == 4
+        user.update_column(:email_reminder_sent_today, true)
+      elsif user.send_email && (email_number == 4) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email_4(user.email).deliver!
-      elsif user.send_email && email_number == 5
+        user.update_column(:email_reminder_sent_today, true)
+      elsif user.send_email && (email_number == 5) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email_5(user.email).deliver!
+        user.update_column(:email_reminder_sent_today, true)
       end
     end  
+end
+
+# Reset email reminder column daily
+
+task reset_email_column: :environment do
+  User.all.each do |user|
+    user.update_column(:email_reminder_sent_today, false)
+  end
 end
 
 
