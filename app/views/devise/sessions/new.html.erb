@@ -17,6 +17,9 @@
       <div><%= f.submit "Sign in", class: 'btn btn-info' %></div>
     <% end %>
 
+  </br>
     <%= render "devise/shared/links" %>
+  </br>
+    <%= mail_to('hello@onebreath.io', 'Contact us') %>
 
 </div>
