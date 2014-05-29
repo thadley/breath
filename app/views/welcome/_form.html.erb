@@ -1,52 +1,71 @@
 </br>
-</br>
-</br>
-</br>
-<% if current_user %>
-  <%= form_for @user do |f| %>
-    <div class="form-group">
-  
-      <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
-        <label for="email" class="control-label"> </label>
-        <!--   <%= f.label :e %><br /> -->
-        <%= f.text_field :email, class: 'form-control', placeholder: 'email' %>
-      </div>
 
-      <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
-        <label for="phone number" class="control-label"> </label>
-        <!--  <%= f.label :p %><br /> -->
-        <%= f.text_field :phone_number, class: 'form-control', placeholder: 'phone number' %></br>
-      </div>
+<% if current_user %>
+</br>
+</br>
+</br>
+    <%= form_for @user do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
+      <label for="email" class="control-label"> </label>
+      <!--   <%= f.label :e %><br /> -->
+      <%= f.email_field :email, class: 'form-control', placeholder: 'email' %>
+      <p><%= f.check_box :send_email %> <%= f.label :send_email %></p>
     </div>
 
-      <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
-        <%= f.submit 'Update', class: 'btn btn-info' %>
+    <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
+      <label for="phone number" class="control-label"> </label>
+      <!--   <%= f.label :p %><br /> -->
+      <%= f.text_field :phone_number, class: 'form-control', placeholder: 'phone number (optional)'%>
+      <label for="carrier" class="control-label"> </label>
+      <!--   <%= f.label :c %><br /> -->
+      <%= f.select :carrier, options_for_select(%w[  AT&T Verizon Sprint T-Mobile USCellular], f.object.carrier), {include_blank: 'carrier (if applicable)'}, {class: "form-control"} %>
+      <p><%= f.check_box :send_sms %> <%= f.label :send_sms %></p></br>
       </div>
+
+    <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
+      <%= f.submit 'Update', class: 'btn btn-info' %>
+    </div>
   <% end %>
 
 <% else %>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-      <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
+      <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
         <label for="email" class="control-label"> </label>
         <!--   <%= f.label :e %><br /> -->
-        <%= f.email_field :email, class: 'form-control', placeholder: 'email', :autofocus => true %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'email' %>
       </div>
 
-      <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
+      <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
         <label for="password" class="control-label"> </label>
         <!--   <%= f.label :p %><br /> -->
         <%= f.password_field :password, class: 'form-control', placeholder: 'password' %>
       </div>
 
-      <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
+      <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
         <label for="password confirmation" class="control-label"> </label>
         <!--   <%= f.label :p %><br /> -->
-        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'confirmation'%></br>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation'%>
+      <p><%= f.check_box :send_email %> <%= f.label :send_email %></p>
       </div>
-      
-      <div class=" col-sm-8 col-md-9 col-lg-10 input-container">
+
+      <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
+        <label for="phone number" class="control-label"> </label>
+        <!--   <%= f.label :p %><br /> -->
+        <%= f.text_field :phone_number, class: 'form-control', placeholder: 'phone number (optional)'%>
+      </div>
+
+      <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
+        <label for="carrier" class="control-label"> </label>
+        <!--   <%= f.label :c %><br /> -->
+        <%= f.select :carrier, options_for_select(%w[  AT&T Verizon Sprint T-Mobile USCellular], f.object.carrier), {include_blank: 'carrier (if applicable)'}, {class: "form-control"} %>
+        <p><%= f.check_box :send_sms %> <%= f.label :send_sms %></p></br>
+      </div>
+
+      <div class=" col-sm-6 col-md-7 col-lg-8 col-sm-offset-2 input-container">
         <%= f.submit "Sign up", class: 'btn btn-info' %>
       </div>
     <% end %>
