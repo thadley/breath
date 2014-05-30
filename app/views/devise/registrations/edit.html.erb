@@ -7,14 +7,14 @@
     <%= devise_error_messages! %>
 
   <p>
-    <div><%= f.label :email %> <%= f.email_field :email, class: 'form-control', placeholder: 'Email', :autofocus => true %></div>
+    <div><%= f.email_field :email, class: 'form-control', placeholder: 'email', :autofocus => true %></div>
     
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <div><%= f.label :password %> <%= f.password_field :password, class: 'form-control', placeholder: 'Password', :autocomplete => "off" %></div> 
+    <div><%= f.password_field :password, class: 'form-control', placeholder: 'password', :autocomplete => "off" %></div> 
   </div>
 
   <div class="col-md-4 col-md-offset-4">
@@ -22,9 +22,9 @@
   </div>
 
 <div class="col-md-2 col-md-offset-5">
-    <div><%= f.label :password_confirmation %> <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation' %></div>
+    <div><%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation' %></div>
 
-    <div><%= f.label :current_password %> <%= f.password_field :current_password, class: 'form-control', placeholder: 'Current password' %></div> 
+    <div><%= f.password_field :current_password, class: 'form-control', placeholder: 'current password' %></div> 
 </div>
 
 <div class="col-md-4 col-md-offset-4">

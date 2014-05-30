@@ -1,4 +1,4 @@
-<div class="form-group" style="width: 20%">
+<div class="col-sm-6 form-group" style="width: 20%">
   <% if current_user %>
      Hello <%= link_to (current_user.email), edit_user_registration_path %>
  </br>
@@ -17,14 +17,14 @@
         <% end %>
 
     <%= form_for @user do |f| %>
-            <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %> 
+            <%= f.text_field :email, class: 'form-control', placeholder: 'email' %> 
             <p class="emailCheckbox">
-            <%= f.check_box :send_email %> <%= f.label :send_email %></p>
-            <%= f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number' %>
-            <%= f.select :carrier, options_for_select(%w[AT&T Verizon Sprint T-Mobile USCellular], f.object.carrier), {}, {class: "form-control"} %>
+            <%= f.check_box :send_email %><class="control-label">&nbsp;send email</label></p>
+            <p><%= f.text_field :phone_number, class: 'form-control', placeholder: 'phone number' %>
+            <%= f.select :carrier, options_for_select(%w[  AT&T Verizon Sprint T-Mobile USCellular], f.object.carrier), {include_blank: 'carrier (if applicable)'}, {class: "form-control"} %><p>
             <p class="smsCheckbox"> 
-            <%= f.check_box :send_sms %> <%= f.label :send_SMS %> <p/>
-            <%= f.submit 'Save', class: 'btn btn-info' %>
+            <%= f.check_box :send_sms %><class="control-label">&nbsp;send sms</label><p/>
+            <p><%= f.submit 'Save', class: 'btn btn-info btn-margin' %></p>
     <% end %></p>
 
  <% else %>

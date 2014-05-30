@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   
   validates :phone_number, 
             length: {is: 10, message: " must be 10 digits."}, 
-            numericality: { only_integer: true, message: " may only consist of numbers." },
-            uniqueness: { message: " is already associated with an account."}, :if => :phone_number?
+            numericality: { only_integer: true, message: " may only consist of numbers." }
+            # uniqueness: { message: " is already associated with an account."}, :if => :phone_number?
 
 
      

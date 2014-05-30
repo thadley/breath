@@ -6,16 +6,16 @@
       <%= devise_error_messages! %>
       <%= f.hidden_field :reset_password_token %>
 
-      <div><%= f.label :password, "New password" %><br />
-      <%= f.password_field :password, class: 'form-control', placeholder: 'Password', :autofocus => true %></div>
+      <div>
+      <%= f.password_field :password, class: 'form-control', placeholder: 'password', :autofocus => true %></div>
 
-      <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation' %></div>
+      <div>
+      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation' %></div>
 
       <br>
       <div><%= f.submit "Change password", class: 'btn btn-info' %></div>
     <% end %>
-
+      <br>
     <%= render "devise/shared/links" %>
 
 </div>

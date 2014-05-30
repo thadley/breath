@@ -49,7 +49,7 @@
     display: inline-block;
     vertical-align: middle;
     float: none;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .col-centered{
@@ -57,7 +57,10 @@
   margin: 0 auto;
 }
 
-label{
-  font-weight: normal;
-  text-transform: lowercase;
+.form-control {
+  margin-top: 5px;
+}
+
+.btn-margin {
+  margin-top: 10px;
 }
