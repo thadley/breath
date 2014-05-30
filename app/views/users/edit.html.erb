@@ -27,6 +27,11 @@
             <p><%= f.submit 'Save', class: 'btn btn-info btn-margin' %></p>
     <% end %></p>
 
+</br>
+    <% if @user.sms_verification_code != @user.sms_verification_code_conf %>
+        Please <%= link_to "verify", users_verify_sms_path %> your phone number
+    <% end %>
+
  <% else %>
     <%= link_to "Sign up", new_user_registration_path %>
     or

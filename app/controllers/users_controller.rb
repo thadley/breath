@@ -23,7 +23,7 @@ end
 def confirm_sms
   if current_user.update_attributes(user_params) && current_user.sms_verified?
     flash[:notice] = "Verification successful"
-    redirect_to root_url
+    redirect_to edit_profile_url
   else 
     flash[:error] = "That code is not valid."
     redirect_to :back
