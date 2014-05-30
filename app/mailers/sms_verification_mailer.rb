@@ -1,5 +1,5 @@
 class SmsVerificationMailer < ActionMailer::Base
-  default from: "trisha.hadley@gmail.com"
+  default from: "hello@onebreath.io"
 
   def sms_verification_email(user)
     @user = user
