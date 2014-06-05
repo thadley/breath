@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
       'Verizon' => '@vtext.com',
       'Sprint' => '@messaging.sprintpcs.com',
       'T-Mobile' => '@tmomail.net',
-      'US Cellular' => '@email.uscc.net'
+      'USCellular' => '@email.uscc.net'
       }
 
       carriers[name].to_s
