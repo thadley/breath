@@ -5,4 +5,4 @@ Made with my mentor at [Bloc](http://bloc.io).
 Ruby -v 2.1.1p76
 Rails -v 4.0.4
 
-Production [URL](http://trisha-breath.herokuapp.com/)
+Production [URL](http://onebreath.io/)
