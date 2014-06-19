@@ -61,4 +61,11 @@ class User < ActiveRecord::Base
     end
   end  
 
+
+  after_create :send_admin_email
+
+  def send_admin_email
+    NewUserMailer.new_user_email.deliver
+  end
+
 end
