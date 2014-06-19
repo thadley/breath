@@ -26,3 +26,10 @@ feature 'opts in for email reminder' do
        expect( page ).to have_content('User information updated')
     end
 end
+
+# Feature: User opts in for email reminder
+
+# Scenario: Successfully
+#   User signs in and visits profile page
+#   Checks 'send email' checkbox
+#   Sees confirmation message
