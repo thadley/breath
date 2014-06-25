@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   
   validates :phone_number, :presence => {:message => " can't be blank if you wish to receive notifications via sms. Please deselect 'Send sms' if you do not wish to receive sms notifications." }, :if => :send_sms?
   
+  validates :carrier, :presence => {:message => " can't be blank if you wish to receive notifications via sms."}, :if => :phone_number?
+
   validates :phone_number, 
             length: {is: 10, message: " must be 10 digits."}, 
             numericality: { only_integer: true, message: " may only consist of numbers." },
