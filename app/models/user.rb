@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
   before_update :generate_sms_verification_code, :if => :phone_number_changed?
 
   def generate_sms_verification_code
-    self.sms_verification_code = rand(36**4).to_s(36)
+    code = rand(36**4).to_s(36)
+    self.sms_verification_code = code
   end
 
   
@@ -59,7 +60,7 @@ class User < ActiveRecord::Base
 
   def send_sms_verification
     if phone_number.present? && phone_number_changed?
-        SmsVerificationMailer.sms_verification_email(self).deliver
+      SmsVerificationMailer.sms_verification_email(self).deliver
     end
   end  
 

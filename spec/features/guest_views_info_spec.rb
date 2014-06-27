@@ -2,10 +2,10 @@ require 'spec_helper'
 
 feature 'Guest views site information' do
 
-    scenario 'Successfully' do
-        visit welcome_about_path
-        expect( page ).to have_content('breath.')
-    end
+  scenario 'Successfully' do
+    visit welcome_about_path
+    expect( page ).to have_content('breath.')
+  end
 end
 
 # Feature: Guest views site information

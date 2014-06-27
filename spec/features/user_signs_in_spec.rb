@@ -13,23 +13,22 @@ feature 'signs in to app' do
     visit new_user_session_path
   end
 
-    scenario 'Successfully' do
-       login_as(user, :scope => :user)
-       visit welcome_launch_path
-       # navigate to user_edit_path with link to 'Sign out'
-       click_link 'email'
-       expect( page ). to have_content('Sign out')
-    end
+  scenario 'Successfully' do
+    login_as(user, :scope => :user)
+    visit welcome_launch_path
+    click_link 'email'
+    expect( page ). to have_content('Sign out')
+  end
 
-    scenario 'with password missing' do
-      sign_in_with 'email@example.com', ''
-      expect( page ).to have_content('Sign in')
-    end
+  scenario 'with password missing' do
+    sign_in_with 'email@example.com', ''
+    expect( page ).to have_content('Sign in')
+  end
 
-    scenario 'with email missing' do
-      sign_in_with '', 'password'
-      expect( page ).to have_content('Sign in')
-    end
+  scenario 'with email missing' do
+    sign_in_with '', 'password'
+    expect( page ).to have_content('Sign in')
+  end
 
   def sign_in_with (email, password)
     visit new_user_session_path
