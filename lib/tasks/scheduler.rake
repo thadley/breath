@@ -9,19 +9,19 @@ desc "Automatically sends daily reminder"
 task email_users: :environment do
     email_number = rand(1..240)
       User.all.each do |user|
-      if user.send_email && (email_number == 1) && !user.email_reminder_sent_today
+      if user.send_email && user.confirmed_at && (email_number == 1) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email(user.email).deliver!
         user.update_column(:email_reminder_sent_today, true)
-      elsif user.send_email && (email_number == 2) && !user.email_reminder_sent_today
+      elsif user.send_email && user.confirmed_at && (email_number == 2) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email_2(user.email).deliver!
         user.update_column(:email_reminder_sent_today, true)
-      elsif user.send_email && (email_number == 3) && !user.email_reminder_sent_today
+      elsif user.send_email && user.confirmed_at && (email_number == 3) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email_3(user.email).deliver!
         user.update_column(:email_reminder_sent_today, true)
-      elsif user.send_email && (email_number == 4) && !user.email_reminder_sent_today
+      elsif user.send_email && user.confirmed_at && (email_number == 4) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email_4(user.email).deliver!
         user.update_column(:email_reminder_sent_today, true)
-      elsif user.send_email && (email_number == 5) && !user.email_reminder_sent_today
+      elsif user.send_email && user.confirmed_at && (email_number == 5) && !user.email_reminder_sent_today
         ReminderMailer.reminder_email_5(user.email).deliver!
         user.update_column(:email_reminder_sent_today, true)
       end
