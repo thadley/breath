@@ -8,7 +8,7 @@ feature 'Visitor signs up with phone number' do
     fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'password'
     fill_in 'user_phone_number', with: '1234567890'
-    select('Verizon', :from => 'user_carrier')
+    select('USCellular', :from => 'user_carrier')
     click_button 'Sign up'
     expect(page).to have_content('A message with a confirmation link has been sent to your email address.')
   end
@@ -19,7 +19,7 @@ feature 'Visitor signs up with phone number' do
     fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'password'
     fill_in 'user_phone_number', with: '1234567890'
-    select('Verizon', :from => 'user_carrier')
+    select('USCellular', :from => 'user_carrier')
     click_button 'Sign up'
     expect(page).to have_content('A message with a confirmation link has been sent to your email address.')
   end
@@ -70,14 +70,14 @@ feature 'Visitor signs up with phone number' do
     fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'password'
     fill_in 'user_phone_number', with: '1234567890'
-    select('Verizon', :from => 'user_carrier')
+    select('USCellular', :from => 'user_carrier')
     click_button 'Sign up'
     expect(page).to have_content('A message with a confirmation link has been sent to your email address.')
     fill_in 'user_email', with: 'john@example.com'
     fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'password'
     fill_in 'user_phone_number', with: '1234567890'
-    select('Verizon', :from => 'user_carrier')
+    select('USCellular', :from => 'user_carrier')
     click_button 'Sign up'
     expect(page).to have_content('is already associated with an account.')
   end

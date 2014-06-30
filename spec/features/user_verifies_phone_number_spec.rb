@@ -17,7 +17,7 @@ feature 'verifies phone number' do
     login_as(user, :scope => :user)
     visit edit_profile_path
     fill_in 'user_phone_number', with: '1234567890'
-    select('Verizon', :from => 'user_carrier')
+    select('USCellular', :from => 'user_carrier')
     click_button 'Save'
     expect(page).to have_content('A verification code was sent to your phone')
     visit users_verify_sms_path
