@@ -87,3 +87,23 @@ task reset_sms_column: :environment do
   end
 end
 
+
+# Special July 4 message
+
+task sms_users_special: :environment do
+  User.all.each do |user|
+    if user.send_sms && user.sms_verified && !user.sms_reminder_sent_today
+     ReminderMailer.reminder_sms_special(user.sms_address).deliver!
+     user.update_column(:sms_reminder_sent_today, true)
+    end
+  end
+end
+
+task email_users_special: :environment do
+  User.all.each do |user|
+    if user.send_email && user.confirmed_at && !user.email_reminder_sent_today
+     ReminderMailer.reminder_email_special(user.email).deliver!
+     user.update_column(:email_reminder_sent_today, true)
+    end
+  end
+end

@@ -62,6 +62,12 @@ class ReminderMailer < ActionMailer::Base
     mail(to: email, subject: '--')
   end
 
+  def reminder_email_special(email)
+    @url = 'http://onebreath.io'
+    @instagram = 'instagram://camera'
+    mail(to: email, subject: ':)')
+  end
+
   # SMS templates (no subject)
   def reminder_sms(email)
     @url = 'http://onebreath.io'
@@ -109,6 +115,11 @@ class ReminderMailer < ActionMailer::Base
   end
 
   def reminder_sms_10(email)
+    @url = 'http://onebreath.io'
+    mail(to: email, subject: '', from: '_onebreath')
+  end
+
+  def reminder_sms_special(email)
     @url = 'http://onebreath.io'
     mail(to: email, subject: '', from: '_onebreath')
   end
