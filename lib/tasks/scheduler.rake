@@ -145,19 +145,19 @@ end
 task sms_users_not_att: :environment do
   sms_number = rand(1..5)
    User.all.each do |user|
-    if user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 1) #&& !user.sms_reminder_sent_today 
+    if user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 1) && !user.sms_reminder_sent_today 
       ReminderMailer.reminder_sms(user.sms_address).deliver!
       user.update_column(:sms_reminder_sent_today, true)
-    elsif user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 2) #&& !user.sms_reminder_sent_today 
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 2) && !user.sms_reminder_sent_today 
       ReminderMailer.reminder_sms_2(user.sms_address).deliver!
       user.update_column(:sms_reminder_sent_today, true)
-    elsif user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 3) #&& !user.sms_reminder_sent_today 
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 3) && !user.sms_reminder_sent_today 
       ReminderMailer.reminder_sms_3(user.sms_address).deliver!
       user.update_column(:sms_reminder_sent_today, true)
-    elsif user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 4) #&& !user.sms_reminder_sent_today 
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 4) && !user.sms_reminder_sent_today 
       ReminderMailer.reminder_sms_4(user.sms_address).deliver!
       user.update_column(:sms_reminder_sent_today, true)
-    elsif user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 5) #&& !user.sms_reminder_sent_today 
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'Verizon' || 'Sprint') && (sms_number == 5) && !user.sms_reminder_sent_today 
       ReminderMailer.reminder_sms_5(user.sms_address).deliver!
       user.update_column(:sms_reminder_sent_today, true)
     end

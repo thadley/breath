@@ -141,27 +141,22 @@ class ReminderMailer < ActionMailer::Base
   end
 
   def reminder_sms_verizon(email)
-    @url = 'http://onebreath.io'
     mail(to: email, subject: '', from: '_onebreath')
   end
 
   def reminder_sms_verizon_2(email)
-    @url = 'http://onebreath.io'
     mail(to: email, subject: '', from: '_onebreath')
   end
 
   def reminder_sms_verizon_3(email)
-    @url = 'http://onebreath.io'
     mail(to: email, subject: '', from: '_onebreath')
   end
 
   def reminder_sms_verizon_4(email)
-    @url = 'http://onebreath.io'
     mail(to: email, subject: '', from: '_onebreath')
   end
 
   def reminder_sms_verizon_5(email)
-    @url = 'http://onebreath.io'
     mail(to: email, subject: '', from: '_onebreath')
   end
 end
