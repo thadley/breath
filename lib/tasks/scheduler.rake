@@ -61,7 +61,7 @@ end
 # Sms content and timing consistent throughout user base (randomization outside of loop)
 
 task sms_users: :environment do
-  sms_number = rand(1..240)
+  sms_number = rand(1..480)
     User.all.each do |user|
     if user.send_sms && user.sms_verified && (user.carrier = 'AT&T') && (sms_number == 1) && !user.sms_reminder_sent_today
       ReminderMailer.reminder_sms(user.sms_address).deliver!
@@ -77,6 +77,21 @@ task sms_users: :environment do
       user.update_column(:sms_reminder_sent_today, true)
     elsif user.send_sms && user.sms_verified && (user.carrier = 'AT&T') && (sms_number == 5) && !user.sms_reminder_sent_today
       ReminderMailer.reminder_sms_5(user.sms_address).deliver!
+      user.update_column(:sms_reminder_sent_today, true)
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'AT&T') && (sms_number == 6) && !user.sms_reminder_sent_today
+      ReminderMailer.reminder_sms_6(user.sms_address).deliver!
+      user.update_column(:sms_reminder_sent_today, true)
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'AT&T') && (sms_number == 7) && !user.sms_reminder_sent_today
+      ReminderMailer.reminder_sms_7(user.sms_address).deliver!
+      user.update_column(:sms_reminder_sent_today, true)
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'AT&T') && (sms_number == 8) && !user.sms_reminder_sent_today
+      ReminderMailer.reminder_sms_8(user.sms_address).deliver!
+      user.update_column(:sms_reminder_sent_today, true)
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'AT&T') && (sms_number == 9) && !user.sms_reminder_sent_today
+      ReminderMailer.reminder_sms_9(user.sms_address).deliver!
+      user.update_column(:sms_reminder_sent_today, true)
+    elsif user.send_sms && user.sms_verified && (user.carrier = 'AT&T') && (sms_number == 10) && !user.sms_reminder_sent_today
+      ReminderMailer.reminder_sms_10(user.sms_address).deliver!
       user.update_column(:sms_reminder_sent_today, true)
     end
   end  
