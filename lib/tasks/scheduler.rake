@@ -7,8 +7,8 @@ desc "Automatically sends daily reminder"
 # Email content and timing consistent throughout user base (randomization outside of loop)
 
 task email_users: :environment do
-  email_number = rand(1..480)
     User.all.each do |user|
+    email_number = rand(1..480)
     if user.send_email && user.confirmed_at && (email_number == 1) && !user.email_reminder_sent_today
       ReminderMailer.reminder_email(user.email).deliver!
       user.update_column(:email_reminder_sent_today, true)
@@ -61,7 +61,7 @@ end
 # Sms content and timing consistent throughout user base (randomization outside of loop)
 
 task sms_users: :environment do
-  sms_number = rand(1..480)
+    sms_number = rand(1..480)
     User.all.each do |user|
     if user.send_sms && user.sms_verified && (user.carrier = 'AT&T') && (sms_number == 1) && !user.sms_reminder_sent_today
       ReminderMailer.reminder_sms(user.sms_address).deliver!
@@ -106,7 +106,7 @@ end
 # Sms content and timing consistent throughout user base (randomization outside of loop)
 
 task sms_users_verizon: :environment do
-  sms_number = rand(1..240)
+   sms_number = rand(1..240)
    User.all.each do |user|
     if user.send_sms && user.sms_verified && (user.carrier = 'Verizon') && (sms_number == 1) && !user.sms_reminder_sent_today 
       ReminderMailer.reminder_sms_verizon(user.sms_address).deliver!
